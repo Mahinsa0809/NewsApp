@@ -1,7 +1,9 @@
 package com.example.newsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -55,10 +57,22 @@ public class Batminton extends Fragment {
         }
     }
 
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_batminton, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_batminton, container, false);
+
+        // Find the CardView and set the click listener
+        CardView registerImageView2 = rootView.findViewById(R.id.crickcard1);
+        registerImageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start CrickNews activity
+                Intent intent = new Intent(getActivity(), BatmintonNews.class);
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
     }
 }
